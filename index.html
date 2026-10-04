@@ -1,1 +1,162 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Roby!</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      background-color: #fce4ec;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+      color: #5d4037;
+    }
+
+    .card-container {
+      text-align: center;
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      font-style: italic;
+      opacity: 0.8;
+      margin-bottom: 30px;
+    }
+
+    .heart-wrapper {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 40px auto;
+      cursor: grab;
+    }
+
+    .heart {
+      position: absolute;
+      inset: 0;
+      background-color: #ff4081;
+      transform: rotate(-45deg);
+      animation: heartBeat 2.6s ease-in-out infinite;
+      transform-origin: 50% 50%;
+      border-radius: 50% 50% 0 0;
+    }
+
+    .heart::before {
+      content: "";
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background-color: #ff4081;
+      border-radius: 50%;
+      top: -40px;
+      left: 0;
+    }
+
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background-color: #ff4081;
+      border-radius: 50%;
+      left: 40px;
+      top: 0;
+    }
+
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1) rotate(-45deg); }
+      50% { transform: scale(1.15) rotate(-45deg); }
+    }
+
+    .message-box {
+      margin-bottom: 30px;
+    }
+
+    .wish {
+      font-size: 0.9rem;
+      opacity: 0.7;
+      margin-bottom: 10px;
+    }
+
+    .title {
+      font-size: 2.7rem;
+      font-weight: bold;
+      color: #d81b60;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .quote {
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+
+    .footer-text {
+      margin-top: 30px;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card-container">
+    <div class="subtitle">a little something, for you</div>
+    
+    <div class="heart-wrapper">
+      <div class="heart" id="heart"></div>
+    </div>
+
+    <div class="message-box">
+      <p class="wish">make a wish...</p>
+      <h1 class="title">Happy<br>Birthday<br>Roby</h1>
+      <p class="quote">...and make it count</p>
+    </div>
+
+    <div class="footer-text">PULL & RELEASE</div>
+  </div>
+
+  <script>
+    const heart = document.getElementById('heart');
+    let isDragging = false;
+    let startY = 0;
+
+    heart.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startY = e.clientY;
+      heart.style.animation = 'none';
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const deltaY = e.clientY - startY;
+      if (deltaY > 0 && deltaY < 150) {
+        heart.style.transform = `translateY(${deltaY}px) rotate(-45deg)`;
+      }
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (isDragging) {
+        isDragging = false;
+        heart.style.transform = '';
+        heart.style.animation = 'heartBeat 2.6s ease-in-out infinite';
+      }
+    });
+  </script>
+</body>
+</html>
