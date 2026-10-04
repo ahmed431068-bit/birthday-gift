@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-border-box;
+}
+
+body {
+  background-color: #fce4ec;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  color: #5d4037;
+}
+
+.card-container {
+  text-align: center;
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  font-style: italic;
+  opacity: 0.8;
+  margin-bottom: 20px;
+}
+
+.heart-wrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 30px auto;
+}
+
+/* حركة نبض القلب */
+.heart {
+  position: absolute;
+  inset: 0;
+  background-color: #ff4081;
+  transform: rotate(-45deg);
+  animation: heartBeat 2.6s ease-in-out infinite;
+  transform-origin: 50% 50%;
+  border-radius: 50% 50% 0 0;
+}
+
+.heart::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: #ff4081;
+  border-radius: 50%;
+  top: -50px;
+  left: 0;
+}
+
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: #ff4081;
+  border-radius: 50%;
+  left: 50px;
+  top: 0;
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1) rotate(-45deg); }
+  50% { transform: scale(1.15) rotate(-45deg); }
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 1.1;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+}
+
+.footer-text {
+  margin-top: 40px;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  opacity: 0.6;
+}
